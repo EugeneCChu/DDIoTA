@@ -1,3 +1,8 @@
+---
+title: Blogging Like a Hacker
+---
+
+
 ## Overview
 
 The goal of this project is to enable a “digital assistant” system that listens to user commands and coordinates distributed applications spanning multiple devices including sensors/actuators.
