@@ -5,7 +5,6 @@ The goal of this project is to enable a “digital assistant” system that list
 
 ## Goals
 
-
 Baseline: a static set of macro-programs over a static set of devices.
 
 Next phase: a static set of macro-programs over dynamic device set, along with parameter generation.
@@ -36,7 +35,9 @@ Stretch goal: dynamically “assemble” macro-programs (if have time).
 ### Next Phase
 
     Based on phase 1, add parameter extraction function which provides parameter input for DDFlow Programs
+    ```markdown
         Voice Input → Text → RNN → Program output with feature parameters 
+    ```
     Map the program output and parameters to DDFlow input
 
 ### Stretch Goal
