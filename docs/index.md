@@ -28,9 +28,9 @@ Stretch goal: dynamically “assemble” macro-programs (if have time).
 
 ### Baseline
 
-Figure out practicable neural network implementations
-    Voice Input → Text → Statistical Correlation → Program Output
-Map the program output to DDFlow input
+    Figure out practicable neural network implementations
+        Voice Input → Text → Statistical Correlation → Program Output
+    Map the program output to DDFlow input
 
 ### Next Phase
 
