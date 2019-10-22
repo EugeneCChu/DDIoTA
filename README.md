@@ -1,3 +1,4 @@
-# ECEM202A
-Digital Distributed IoT Assistant
-sdfsdfsd
+# DDIoTA
+Digital Distributed IoT Assistant. 
+
+Project for ECEM202A Embedded systems
