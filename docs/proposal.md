@@ -17,7 +17,7 @@ Stretch goal: dynamically “assemble” macro-programs (if have time).
 
 ## System Flowchart
 
-![Flowchart](flowchart.png)
+![Flowchart](png/flowchart.png)
 
 
 ## Specifications
