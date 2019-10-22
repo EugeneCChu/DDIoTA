@@ -1,36 +1,25 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/EugeneCChu/ECEM202A/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+### Overview
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The goal of this project is to enable a “digital assistant” system that listens to user commands and coordinates distributed applications spanning multiple devices including sensors/actuators.
 
-### Markdown
+### Goals
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+Baseline: a static set of macro-programs over a static set of devices.
 
-# Header 1
-## Header 2
-### Header 3
+Next phase: a static set of macro-programs over dynamic device set, along with parameter generation.
 
-- Bulleted
-- List
+Stretch goal: dynamically “assemble” macro-programs (if have time).
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+### System Flowchart
 
-[Link](url) and ![Image](src)
-```
+![Flowchart](flowchart.png)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+### Specifications
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/EugeneCChu/ECEM202A/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
