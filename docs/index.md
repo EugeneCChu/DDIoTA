@@ -28,23 +28,23 @@ Stretch goal: dynamically “assemble” macro-programs (if have time).
 
 ### Baseline
 
-    Figure out practicable neural network implementations
-        Voice Input → Text → Statistical Correlation → Program Output
-    Map the program output to DDFlow input
+Figure out practicable neural network implementations
+    Voice Input → Text → Statistical Correlation → Program Output
+Map the program output to DDFlow input
 
 ### Next Phase
 
-    Based on phase 1, add parameter extraction function which provides parameter input for DDFlow Programs
-    ```markdown
-        Voice Input → Text → RNN → Program output with feature parameters 
-    ```
-    Map the program output and parameters to DDFlow input
+Based on phase 1, add parameter extraction function which provides parameter input for DDFlow Programs
+```markdown
+    Voice Input → Text → RNN → Program output with feature parameters 
+```
+Map the program output and parameters to DDFlow input
 
 ### Stretch Goal
 
-    Variable parameters over the dynamic device set
+Variable parameters over the dynamic device set
 
 
 ## Reference Work
-    Siri, Alexa, Google Assistant, Mobile Health
-    DDFlow
+* Siri, Alexa, Google Assistant, Mobile Health
+* DDFlow
