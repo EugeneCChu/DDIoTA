@@ -1,8 +1,2 @@
 theme: jekyll-theme-cayman
-
-header:
-  actions:
-    - label: "News"
-      url: "/news/index.html"
-    - label: "Contact"
-      url: "/contact/index.html"
+show_downloads: true
