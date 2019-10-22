@@ -1,3 +1,6 @@
+---
+layout: default
+---
 ## Contact
 
 ### Eugene Chu
