@@ -4,7 +4,7 @@ layout: default
 
 ### 2019/10/26
 
-**First Phase Complete**
+**First Phase - 100%**
 1. Front-end program can extract sentence from speech with high accuracy
 2. Back-end analysis can extract `DEVICE NOUN` from text 
 3. Currently no parameters or specific actions can be determined
