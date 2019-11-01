@@ -41,7 +41,7 @@ Map the program output to DDFlow input
 
 Based on phase 1, add parameter extraction function which provides parameter input for DDFlow Programs
 ```markdown
-    Voice Input → Text → RNN → Program output with feature parameters 
+    Voice Input → Text → NN → Program output with feature parameters 
 ```
 Map the program output and parameters to DDFlow input
 
