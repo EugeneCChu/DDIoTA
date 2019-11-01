@@ -2,8 +2,6 @@
 layout: default
 ---
 
-## Progress
-
 ### 2019/10/26
 
 **First Phase Complete**
@@ -23,7 +21,7 @@ Python speech to text → SpaCy Part-Of-Speech tagger
 
 **Second Phase -- 50%**
 1. Added *Syntatic Dependency Parsing* allowing creation of parse trees
-2. Separation of `DEVICE NOUN`, `PARAMETER NOUN` and their corresponding `VERB`s
+2. Separation of `DEVICE NOUN`, `PARAMETER NOUN` and their corresponding `VERB`
 
 **TODO**
 1. Rule-based matching to account for inaccuracy in parse trees
