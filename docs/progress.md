@@ -10,7 +10,7 @@ layout: default
 3. Currently no parameters or specific actions can be determined
 
 ```markdown
-Python speech to text → SpaCy Part-Of-Speech tagger
+Python speech to text → Part-Of-Speech tagger
 ```
 
 **TODO**
@@ -22,6 +22,11 @@ Python speech to text → SpaCy Part-Of-Speech tagger
 **Second Phase -- 50%**
 1. Added *Syntatic Dependency Parsing* allowing creation of parse trees
 2. Separation of `DEVICE NOUN`, `PARAMETER NOUN` and their corresponding `VERB`
+
+```markdown
+Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser → Rule Matching
+```
+
 
 **TODO**
 1. Rule-based matching to account for inaccuracy in parse trees
