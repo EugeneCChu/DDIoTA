@@ -11,12 +11,13 @@ layout: default
 2. Back-end analysis can extract `DEVICE NOUN` from text 
 3. Currently no parameters or specific actions can be determined
 
-**TODO**
-1. Continue onto second phase
-
 ```markdown
 Python speech to text → SpaCy Part-Of-Speech tagger
 ```
+
+**TODO**
+1. Continue onto second phase
+
 
 ### 2019/10/31
 
