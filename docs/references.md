@@ -8,7 +8,6 @@ Matthew Honnibal and Ines Montani.
 
 [FLAIR: An Easy-to-Use Framework for State-of-the-Art NLPR](https://www.aclweb.org/anthology/papers/N/N19/N19-4010/).
 Alan Akbik, Tanja Bergmann, Duncan Blythe, Kashif Rasul, Stefan Schweter and Roland Vollgraf.
-2019 Annual Conference of the North American Chapter of the Association for Computational Linguistics (Demonstrations), **NAACL 2019**.
 
 [BERT: Bidirectional Encoder Representations from Transformers](https://arxiv.org/abs/1810.04805).
 Jacob Devlin, Ming-Wei Chang, Kenton Lee and  Kristina Toutanova.
