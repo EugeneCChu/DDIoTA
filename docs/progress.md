@@ -4,9 +4,8 @@ layout: default
 
 ### 2019/10/26
 
-**First Phase - 100%**
-1. Front-end program can extract sentence from speech with high accuracy
-2. Back-end analysis can extract `DEVICE NOUN` from text 
+**First Phase - 80%**
+1. Front-end program can extract sentence from speech with high accuracy 
 3. Currently no parameters or specific actions can be determined
 
 ```markdown
@@ -14,14 +13,26 @@ Python speech to text → Part-Of-Speech tagger
 ```
 
 **TODO**
+1. Extract of device name (NOUN type)
+2. Start of second phase
+
+### 2019/11/2
+
+**First Phase - 100%**
+1. Actions can be determined
+2. Back-end analysis can extract `DEVICE NOUN` from text 
+
+
+**TODO**
 1. Continue onto second phase
 
 
-### 2019/10/31
+### 2019/11/9
 
-**Second Phase -- 50%**
+**Second Phase -- 40%**
 1. Added *Syntatic Dependency Parsing* allowing creation of parse trees
 2. Separation of `DEVICE NOUN`, `PARAMETER NOUN` and their corresponding `VERB`
+3. Elimination of stopwords
 
 ```markdown
 Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser → Rule Matching
@@ -32,3 +43,37 @@ Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser �
 1. Rule-based matching to account for inaccuracy in parse trees
 2. Word embeddings(BERT/Flair) for synonyms
 
+### 2019/11/16
+
+**Second Phase -- 60%**
+1. 
+2. 
+
+
+
+**TODO**
+1. 
+2. 
+
+### 2019/11/23
+
+**Second Phase -- 85%**
+1. Synonym partially done
+2. 
+
+
+**TODO**
+1. Add robustness of strcture analysis
+2. Wrap off handling synonym & acronym
+
+### 2019/11/30
+
+**Second Phase -- 100%**
+1. Synonym & acronym handling done
+2. Robustness enhanced
+
+
+
+**TODO**
+1. Start doing research for the stretch goal
+2. Extra effort on system robustness
