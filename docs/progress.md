@@ -77,3 +77,16 @@ Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser �
 **TODO**
 1. Start doing research for the stretch goal
 2. Extra effort on system robustness
+
+### 2019/12/7
+
+**Third Phase Head Start**
+1. Research about third phase
+2. 
+
+
+
+**TODO**
+1. Final presentation preparation
+2. Weblite update
+2. Final video
