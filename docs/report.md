@@ -2,17 +2,20 @@
 layout: default
 ---
 
+# Digital Distributed IoT Assistant
 
-# Introduction
+## Abstract
+
+## Introduction
   ### Background
 
   ### Goals
 
-# System Design
+## System Design
 
-# Prior Works
+## Prior Works
 
-# Technical Approach
+## Technical Approach
 
   ### 1
 
@@ -24,10 +27,8 @@ layout: default
 
   ### 5
 
-# Strength and Weakness
+## Strength and Weakness
 
-# Future Works
+## Future Works
 
-# Reference
-
-This is the final report
+## Reference
