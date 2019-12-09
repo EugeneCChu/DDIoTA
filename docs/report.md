@@ -12,7 +12,7 @@ With an Internet of Things (IoT) spatially distributed in our environment, users
 
 
 ## Introduction
-  ### Background & Goals
+### Background & Goals
   A large number of spatially-distributed Internet of Things (IoT) has populated our living and work environments, motivating researchers to explore various interaction techniques. At present, the main interaction method with a majority of IoT assistants such as Amazon Alexa, Google Home and Apple Siri is through voice command. However, these interaction techniques are limited to a single command over a static device rather than a dynamic distribution on multiple devices. This brings plenty of inefficiency to the interaction scenario, as when a user attempts to make commands over a wide range of devices, there is no way for him to simply conduct a one-time command. Instead, he'd have to input those commands one at a time depending on the number of device. 
   
   To solve this inefficient scenario, we present DDIoTA, an IoT assistant that could achieve macroprogramming over a dynamic set of devices. This project is based on some state-of-the-art models and neural networks. There are three major steps of this project:
@@ -34,15 +34,15 @@ With an Internet of Things (IoT) spatially distributed in our environment, users
 
 ## Technical Approach
 
-  ### Voice to text
+### Voice to text
 
-  ### Bert
+### Bert
 
-  ### Flair
+### Flair
 
-  ### Command Generator
+### Command Generator
 
-  ### 5
+### 5
 
 ## Result
 
