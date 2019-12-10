@@ -50,7 +50,6 @@ Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser �
 2. Research about how to handle if statement
 
 
-
 **TODO**
 1. Finish the 4 element tuple
 2. Re-dig into SpaCy for different command structure
@@ -88,5 +87,6 @@ Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser �
 
 **TODO**
 1. Final presentation preparation
-2. Weblite update
-2. Final video
+2. Finish if statement
+3. Weblite update
+4. Final video
