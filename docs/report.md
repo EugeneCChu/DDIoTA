@@ -4,7 +4,7 @@ layout: default
 
 # Digital Distributed IoT Assistant
 
-Eugene Chu 405219652
+Eugene Chu 405219652  
 Nicolas cheng 905219471
 
 ## Abstract
