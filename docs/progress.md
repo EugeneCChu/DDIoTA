@@ -46,20 +46,20 @@ Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser �
 ### 2019/11/16
 
 **Second Phase -- 60%**
-1. 
-2. 
+1. Started revising output format to a 4 element tuple
+2. Research about how to handle if statement
 
 
 
 **TODO**
-1. 
-2. 
+1. Finish the 4 element tuple
+2. Re-dig into SpaCy for different command structure
 
 ### 2019/11/23
 
 **Second Phase -- 85%**
 1. Synonym partially done
-2. 
+2. New output format basically done with some minor errors to deal with
 
 
 **TODO**
@@ -73,16 +73,16 @@ Python speech to text → Part-Of-Speech tagger → Syntatic Dependency Parser �
 2. Robustness enhanced
 
 
-
 **TODO**
 1. Start doing research for the stretch goal
 2. Extra effort on system robustness
+3. Handle if statement
 
 ### 2019/12/7
 
 **Third Phase Head Start**
 1. Research about third phase
-2. 
+2. If statement partially done
 
 
 
