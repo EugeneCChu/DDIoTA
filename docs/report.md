@@ -17,7 +17,8 @@ With an Internet of Things (IoT) spatially distributed in our environment, users
   
   To solve this inefficient scenario, we present DDIoTA, an IoT assistant that could achieve macroprogramming over a dynamic set of devices. This project is based on some state-of-the-art models and neural networks. There are three major steps of this project:
   
-  First is to 
+  **First**: identify the function that user is attempting to input and generate a list of parameter-less macroprograms. This step mainly aims at focusing 
+  **Second**: 
   
   
   
