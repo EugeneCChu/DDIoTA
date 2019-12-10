@@ -5,7 +5,7 @@ layout: default
 # Digital Distributed IoT Assistant
 
 Eugene Chu 405219652  
-Nicolas cheng 905219471
+Nicolas Cheng 905219471
 
 ## Abstract
 With an Internet of Things (IoT) spatially distributed in our environment, users often feel a need to interact with them more efficiently. We summarize a design space of interaction with different deivce and identify an underexplored area that inspires the design of DDIoTA--- a front end “digital assistant” system that listens to user commands and coordinates distributed applications spanning multiple devices including sensors/actuators. We collected some real world commands that are largely used in daily lives and used multiple models such as Bert[1], Flair[2] and NTLK[3] to process the command. In this report, we first introduce the background, goals and related works of this project, then we provide system design and technical approaches on how the command is processed. At last, we organize the potential future works and conclusion for this project.
