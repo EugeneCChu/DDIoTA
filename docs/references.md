@@ -22,5 +22,5 @@ Junru Zhou and Hai Zhao.
 Nils Reimers and Iryna Gurevych.
 
 7. [Natural Language Tool Kit](https://www.nltk.org/index.html).
-Steven Bird, Liling Tan
+Steven Bird, Liling Tan.
 
