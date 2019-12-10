@@ -21,5 +21,6 @@ Junru Zhou and Hai Zhao.
 6. [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084/).
 Nils Reimers and Iryna Gurevych.
 
-7. [Natural Language Tool Kit](https://www.nltk.org/index.html) Steven Bird, Liling Tan
+7. [Natural Language Tool Kit](https://www.nltk.org/index.html).
+Steven Bird, Liling Tan
 
