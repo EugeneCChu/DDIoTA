@@ -74,6 +74,17 @@ Insert set ac…
 
 ## Result
 
+A 41-command-included file is used for DDIoTA system verification. These commands are all acquired from popular *Siri* and *Alexa* popular command lists. The length of commands ranges from 3 to 12 words and desired output tuple-command number range from 1 to 4. The accuracy versus command length graph is shown below.
+
+Insert accuracy plot
+
+Out of the 41 commands, 37 are correctly processed by our system, which yields an accuracy of 92.5%. It is worth saying that most of the long commands are not correctly parsed, which suggests that when the command becomes lengthy, our system still suffers a hard time to accurately yield the output completely, although partial of its output is accurate. But for shorter commands, it can already reach a high recognition accuracy.
+
+The latency incurred by processing is shown below. We can observe that the latency does not vary much with the change of command length. This proves the stability of our system as the work to be done does not increase dramatically with the increasing complexity of input command. Generally, the latency stays between 0.05s to 0.25s, which performs like a real-time system. Nevertheless, for some rare cases, there exist latency spikes that could reach 1 to 1.5s. This may become an aspect that future work could pay attention to.
+
+Insert accuracy plot
+
+
 
 ## Strength and Weakness
 
