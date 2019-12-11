@@ -17,8 +17,19 @@ With an Internet of Things (IoT) spatially distributed in our environment, users
   
   To solve this inefficient scenario, we present DDIoTA, an IoT assistant that could achieve macroprogramming over a dynamic set of devices. This project is based on some state-of-the-art models and neural networks. There are three major steps of this project:
   
-  **First**: identify the function that user is attempting to input and generate a list of parameter-less macroprograms. This step mainly aims at reconstructing the capability of Siri, which assumes that the device to be interact with is already known, and the system simply attempt to grasp the action on the device without any parameters or conditions. 
-  **Second**: 
+**First**: identify the function that user is attempting to input and generate a list of parameter-less macro-programs. This step mainly aims at reconstructing the capability of Siri, which assumes that the device to be interact with is already known, and the system simply attempt to grasp the action on the device without any parameters or conditions. The following graph helps explaining how the first phase works: in this sentence, only two key elements can be grasped: *open* and *door*. After grasping those two words, the system then simply put the word “open” in the *Action* position and put “door” in the *Device* position.
+
+Insert “open the door”
+
+
+**Second**: Compared with the first phase, there are two main breakthroughs in the second phase. On one hand, from the input voice command, the system should be able to do a system structure analysis throughout the command and accurately grasp the four command output elements: *Action*, *Device/System*, *Parameter* and *Condition*. This is still within the capability of existing interaction techniques. On the other hand, if there are multiple intended commands within one sentence, the system is supposed to split out each individual command with the four elements (*Action*, *Device/System*, *Parameter* and *Condition*) and output these commands separately. For instance, in the example below, the system can process the input “Put the cup and plate on the shelf and floor.” into four output four-element tuples: (Put, Cup, Shelf, None), (Put, Plate, Shelf, None), (Put, Cup, Floor, None), (Put, Plate, Shelf, None). Note that there are no trigger conditions in this command, so the *Condition* element is left blank.
+
+Insert: “Put the cup and plate on the shelf and floor.”
+
+**Third**: The third phase is the one where dynamically assemble macro-programs across dynamic device sets. In this step, the user is no longer required to mention the details of each command. Instead, he would give a “condensed” command, and the system would extract key information from this command to determine which devices or systems to trigger and how the operation should be. For instance, when the user says a command “Catch the thief”, the system would first capture the keywords *catch* and *thief*, after which a series of text commands would be generated such as “initiate the camera at location xx”, “send drones to follow the thief” and “notify the police where the thief is”. After that, each text command would be processed and executed respectively to *dynamically* distributed macro-programs. 
+
+Unfortunately, due to time limitation, we are only able to complete the first two phases and the third phase would need more time before it can be implemented. 
+
   
   
   
