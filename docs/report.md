@@ -42,11 +42,20 @@ Unfortunately, due to time limitation, we are only able to complete the first tw
 
 ## System Design
 
+Insert: flowchart
+
+The flowchart above illustrates the process of our work. As a user makes a voice input, it is first transcribed into text string by *Python SpeechRecognition Model*. Then using Spacy, which syntactically analyzes and parses the string, each word is represented by a token which not only includes what this word is, but also its relationships between other words in the command. The output of SpaCy-processed command is a structured command. Then the command goes through a extraction algorithm which generates a list of four-word tuples, each of which represents a parsed command. After that, stop words are removed from each command to make sure that only the key information is preserved. Lastly, a mapping between the parsed commands and available commands is applied. Mainly consists of *acronym* and *synonym* word replacement, this procedure guarantees that the parsed command can be understood by the executing programs. More details about how each step is implemented s introduced in the following *technical approach* section.
+
 
 
 ## Technical Approach
 
 ### Voice to text
+
+To transfer voice command to text string, we used *Python SpeechRecognition Model* [reference] with the *Google Speech API*. The performance of transcription is generally satisfying, with an accuracy of 92.5%. The accuracy of other APIs are also tested such as (Add api names), and their success rate of transcription varies between 71% to 85%. Below are the API comparison table using *Python SpeechRecognition Model*. 
+
+Insert table
+
 
 ### Bert
 
