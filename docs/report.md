@@ -19,7 +19,7 @@ With an Internet of Things (IoT) spatially distributed in our environment, users
   
 **First**: identify the function that user is attempting to input and generate a list of parameter-less macro-programs. This step mainly aims at reconstructing the capability of Siri, which assumes that the device to be interact with is already known, and the system simply attempt to grasp the action on the device without any parameters or conditions. The following graph helps explaining how the first phase works: in this sentence, only two key elements can be grasped: *open* and *door*. After grasping those two words, the system then simply put the word “open” in the *Action* position and put “door” in the *Device* position.
 
-Insert “open the door”
+![openthedoor](https://github.com/EugeneCChu/DDIoTA/blob/master/supportive_imgs/openthedoor.png)
 
 
 **Second**: Compared with the first phase, there are two main breakthroughs in the second phase. On one hand, from the input voice command, the system should be able to do a system structure analysis throughout the command and accurately grasp the four command output elements: *Action*, *Device/System*, *Parameter* and *Condition*. This is still within the capability of existing interaction techniques. On the other hand, if there are multiple intended commands within one sentence, the system is supposed to split out each individual command with the four elements (*Action*, *Device/System*, *Parameter* and *Condition*) and output these commands separately. For instance, in the example below, the system can process the input “Put the cup and plate on the shelf and floor.” into four output four-element tuples: (Put, Cup, Shelf, None), (Put, Plate, Shelf, None), (Put, Cup, Floor, None), (Put, Plate, Shelf, None). Note that there are no trigger conditions in this command, so the *Condition* element is left blank.
@@ -42,7 +42,7 @@ Unfortunately, due to time limitation, we are only able to complete the first tw
 
 ## System Design
 
-Insert: flowchart
+![flowchart](https://github.com/EugeneCChu/DDIoTA/blob/master/supportive_imgs/flowchart.png)
 
 The flowchart above illustrates the process of our work. As a user makes a voice input, it is first transcribed into text string by *Python SpeechRecognition Model*. Then using Spacy, which syntactically analyzes and parses the string, each word is represented by a token which not only includes what this word is, but also its relationships between other words in the command. The output of SpaCy-processed command is a structured command. Then the command goes through a extraction algorithm which generates a list of four-word tuples, each of which represents a parsed command. After that, stop words are removed from each command to make sure that only the key information is preserved. Lastly, a mapping between the parsed commands and available commands is applied. Mainly consists of *acronym* and *synonym* word replacement, this procedure guarantees that the parsed command can be understood by the executing programs. More details about how each step is implemented s introduced in the following *technical approach* section.
 
@@ -54,7 +54,7 @@ The flowchart above illustrates the process of our work. As a user makes a voice
 
 To transfer voice command to text string, we used *Python SpeechRecognition Model* [reference] with the *Google Speech API*. The performance of transcription is generally satisfying, with an accuracy of 92.5%. The accuracy of other APIs are also tested such as (Add api names), and their success rate of transcription varies between 71% to 85%. Below are the API comparison table using *Python SpeechRecognition Model*. 
 
-Insert table
+![table](https://github.com/EugeneCChu/DDIoTA/blob/master/supportive_imgs/table.png)
 
 
 ### Bert
@@ -69,20 +69,20 @@ Because our system’s purpose is to convert voice to multiple commands in tuple
 
 One instance of *synonym & acronym handling* is presented below:
 
-Insert set ac…
+![set_ac](https://github.com/EugeneCChu/DDIoTA/blob/master/supportive_imgs/acro_syno.png)
 
 
 ## Result
 
 A 41-command-included file is used for DDIoTA system verification. These commands are all acquired from popular *Siri* and *Alexa* popular command lists. The length of commands ranges from 3 to 12 words and desired output tuple-command number range from 1 to 4. The accuracy versus command length graph is shown below.
 
-Insert accuracy plot
+![accuracy](https://github.com/EugeneCChu/DDIoTA/blob/master/supportive_imgs/result_accuracy.png)
 
 Out of the 41 commands, 37 are correctly processed by our system, which yields an accuracy of 92.5%. It is worth saying that most of the long commands are not correctly parsed, which suggests that when the command becomes lengthy, our system still suffers a hard time to accurately yield the output completely, although partial of its output is accurate. But for shorter commands, it can already reach a high recognition accuracy.
 
 The latency incurred by processing is shown below. We can observe that the latency does not vary much with the change of command length. This proves the stability of our system as the work to be done does not increase dramatically with the increasing complexity of input command. Generally, the latency stays between 0.05s to 0.25s, which performs like a real-time system. Nevertheless, for some rare cases, there exist latency spikes that could reach 1 to 1.5s. This may become an aspect that future work could pay attention to.
 
-Insert accuracy plot
+![latency](https://github.com/EugeneCChu/DDIoTA/blob/master/supportive_imgs/result_latency.png)
 
 
 
