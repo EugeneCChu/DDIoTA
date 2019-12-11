@@ -63,7 +63,14 @@ Insert table
 
 ### Command Generator
 
-### 5
+### Synonym & Acronym
+
+Because our system’s purpose is to convert voice to multiple commands in tuple form and feed those tuples to DDFlow, it is crucial that the output is understood-able by the DDFlow system. This brings in the necessity that when the command uses a word that DDFlow cannot comprehend, the command can be converted in a way within DDFlow’s comprehension capability. For instance, the operation *direct the TV channel to 75* may confuse DDFlow because it does not have an action *direct* for the device TV. Instead, the word *switch* is available. In this scenario, introducing word substitution becomes essential. So far, we have come up with two kinds of word substitutions: *synonym* and *acronym*. First, we wrote a python dictionary simulating what devices/systems there are and what their available commands are respectively. If a command’s device element is not recognizable by the system, we would introduce the *synonym & acronym handling* procedure. For acronym, if the device name consists of two or more words (e.g air conditioner), we simply take the first letter abbreviation and see if it matches any available registered device. Then if there’s still no matching, we would check whether the device name’s synonym list has anything in the available device list, and if there is any, we would replace the device element with that available device name. After that, the *action* element goes through the same procedure. We use the python *NTLK Wordnet*[reference] to achieve synonym list organization and word replacement.
+
+One instance of *synonym & acronym handling* is presented below:
+
+Insert set ac…
+
 
 ## Result
 
