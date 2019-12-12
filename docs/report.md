@@ -96,8 +96,8 @@ The latency incurred by processing is shown below. We can observe that the laten
 
 
 ## Reference
-[1] https://github.com/google-research/bert
-[2] https://github.com/zalandoresearch/flair
-[3] https://www.nltk.org/
+[1] https://github.com/google-research/bert 
+[2] https://github.com/zalandoresearch/flair 
+[3] https://www.nltk.org/ 
 
 
