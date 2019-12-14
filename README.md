@@ -12,3 +12,8 @@ https://eugenecchu.github.io/DDIoTA/
 
 The demo video can be found at:   
 https://youtu.be/9DbU6AP8Yao
+
+To run our program:
+- Enter code/
+- Check the requirements in README
+- Run main.py
