@@ -122,7 +122,7 @@ parso==0.3.2
 pbr==5.1.2
 pexpect==4.6.0
 pickleshare==0.7.5
-Pillow==6.0.0
+Pillow==6.2.0
 plac==0.9.6
 playsound==1.2.2
 plotly==3.6.1
