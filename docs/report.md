@@ -56,7 +56,7 @@ To transfer voice command to text string, we use the **Python SpeechRecognition 
 
 ![table](supportive_imgs/table.png)
 
-## SpaCy
+### SpaCy
 We utilize the SpaCy python module[4] for basic sentence structure analysis and dependency parsing. We chose SpaCy as it interoperates seamlessly with TensorFlow, PyTorch, scikit-learn, Gensim and the rest of Python's AI ecosystem, further simplfying tasks such as data format conversion and connection to downstream tasks in our pipeline. In this step, we input sentence commands in string format, where each word token is then annotated with it's corresponding Part-Of-Speech (POS) tagging as well as it's dependencies. This allows us to extract the relavant relationships between token pairs such as (NOUN,VERB) or (VERB, ADP) pairs, which are crucial in interpreting user commands. This 
 
 ### Command Generator
