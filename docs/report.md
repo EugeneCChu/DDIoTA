@@ -57,7 +57,7 @@ To transfer voice command to text string, we use the **Python SpeechRecognition 
 ![table](supportive_imgs/table.png)
 
 ## SpaCy
-We utilize the SpaCy python module[2] for basic sentence structure analysis and dependency parsing. We chose SpaCy as it interoperates seamlessly with TensorFlow, PyTorch, scikit-learn, Gensim and the rest of Python's AI ecosystem, further simplfying tasks such as data format conversion and connection to downstream tasks in our pipeline. In this step, we input sentence commands in string format, where each word token is then annotated with it's corresponding Part-Of-Speech (POS) tagging as well as it's dependencies. This allows us to extract the relavant relationships between token pairs such as (NOUN,VERB) or (VERB, ADP) pairs, which are crucial in interpreting user commands. This 
+We utilize the SpaCy python module[4] for basic sentence structure analysis and dependency parsing. We chose SpaCy as it interoperates seamlessly with TensorFlow, PyTorch, scikit-learn, Gensim and the rest of Python's AI ecosystem, further simplfying tasks such as data format conversion and connection to downstream tasks in our pipeline. In this step, we input sentence commands in string format, where each word token is then annotated with it's corresponding Part-Of-Speech (POS) tagging as well as it's dependencies. This allows us to extract the relavant relationships between token pairs such as (NOUN,VERB) or (VERB, ADP) pairs, which are crucial in interpreting user commands. This 
 
 ### Command Generator
 The syntax tree constructed by SpaCy is then passed on to our command generator. In this stage, we distinguish between `DEVICE NOUNS` and `PARAMETER NOUNS`, as well as `CONDITION ADPS` and `PARAMETER ADPS`. As SpaCy cannot achieve 100% accuracy in syntatic parsing, we've included our own optimizer within this stage to further improve our parsing strategy. 
@@ -91,7 +91,7 @@ In speech input, we often connect multiple commands together with conjugatives s
 
 
 ### Flair/BERT
-Flair [3] is a powerful, multilingual NLP library that includes many text and docment embedding techniques and models developed by [Zalando Research](https://research.zalando.com/). It is compatible with PyTorch as well as TensorFlow, which gives it simple interfaces that allow us to combine different word and document embeddings. In our project, we choose to use BERT embeddings developed by Google. BERT embeddings are based on a bidirectional transformer architecture with state-of-the-art performance in multiple NLP tasks, and it's unique "Whole Word Masking" training technique gives us accurate results in determining the meaning a particular word given it's neighboring words and sentence structure. We chose to pool the last 4 output layers as the final word embedding for similarity analysis.
+Flair [2] is a powerful, multilingual NLP library that includes many text and docment embedding techniques and models developed by [Zalando Research](https://research.zalando.com/). It is compatible with PyTorch as well as TensorFlow, which gives it simple interfaces that allow us to combine different word and document embeddings. In our project, we choose to use BERT embeddings developed by Google. BERT embeddings are based on a bidirectional transformer architecture with state-of-the-art performance in multiple NLP tasks, and it's unique "Whole Word Masking" training technique gives us accurate results in determining the meaning a particular word given it's neighboring words and sentence structure. We chose to pool the last 4 output layers as the final word embedding for similarity analysis.
 
 ### Synonym & Acronym
 
@@ -117,12 +117,18 @@ The latency incurred by processing is shown below. We can observe that the laten
 
 
 ## Strength and Weakness
+Currently, our program has low latency in parsing speech input and resolves the commands with acceptable accuracy. The program is also capable of customizing for new devices and functions, which is important for connecting to downstream tasks such as DDFlow.
 
+However, current bottlenecks are located in sentence parsing, as punctuation is often integral in parsing sentence commands, yet are overlooked in speech to text translations. This may cause confusion in sentence structure, resulting in mis-parsed commands. Furthermore, we have observed poor performance in identifying nomenclatures, which are often identified as unknown words, rather than named entities by SpaCy. We believe that further specialized training for our language models may be necessary if our program is to be deployed on more niche environments.
 
 ## Future Works
+As sentences often include multiple subclauses for `DEVICE`, `PARAMETER`, and `CONDITION`s, we wish to solve existing confusing cases, such as the word “with” for subclauses. We also look into dynamically “assembling” macro-programs that consist of multiple devices and actions with a single command, which gives further integration into DDFlow.
+
 
 
 ## Conclusion
+We have contructed a program that allows users to more efficiently interact with the variety of IoT devices distributed in our environment. DDIoTA is a "digital assisant" that resolves vocal input into 4-tuple command parameters that correspond to extant devices and functions within our dynamic device set. We tested our program on commonly used commands in daily life and used state-of-the-art NLP models such as BERT[1] as well as syntatic parsing techniques in SpaCy[4] for command processing and generation. We can achieve 92.5% accuracy in decoding commands with multiple devices and actions, which is currently not possible with commerical digital assistants such as Apple Siri or Amazon Alexa. For our future work, we'll look into further fine-tuning our language and dependency parsing models for commands, which will improve our accuracy during command generation. Furthermore, we wish to refine our program for dynamic assembly of macro-programs with variable parameters, which will improve our integration into DDFlow.
+
 
 
 ## Reference
@@ -131,5 +137,7 @@ The latency incurred by processing is shown below. We can observe that the laten
 [2] https://github.com/zalandoresearch/flair 
 
 [3] https://www.nltk.org/ 
+
+[4]https://spacy.io
 
 
