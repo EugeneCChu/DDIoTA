@@ -129,6 +129,8 @@ As sentences often include multiple subclauses for `DEVICE`, `PARAMETER`, and `C
 ## Conclusion
 We have contructed a program that allows users to more efficiently interact with the variety of IoT devices distributed in our environment. DDIoTA is a "digital assisant" that resolves vocal input into 4-tuple command parameters that correspond to extant devices and functions within our dynamic device set. We tested our program on commonly used commands in daily life and used state-of-the-art NLP models such as BERT[1] as well as syntatic parsing techniques in SpaCy[4] for command processing and generation. We can achieve 92.5% accuracy in decoding commands with multiple devices and actions, which is currently not possible with commerical digital assistants such as Apple Siri or Amazon Alexa. For our future work, we'll look into further fine-tuning our language and dependency parsing models for commands, which will improve our accuracy during command generation. Furthermore, we wish to refine our program for dynamic assembly of macro-programs with variable parameters, which will improve our integration into DDFlow.
 
+## Demo Video  
+The demo video can be found at:  
 
 
 ## Reference
