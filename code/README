@@ -1,8 +1,5 @@
-Run these commands to install spacy and it's model:
-    pip install -U spacy
-    python3 -m spacy download en_core_web_lg
+Run command to install dependencies:
 
-    pip install -U nltk
-    >>> import nltk
-    >>> nltk.download('wordnet')
-
+```
+pip install --requirement requirements.txt
+```
