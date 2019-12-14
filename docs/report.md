@@ -69,7 +69,7 @@ During this stage, we feed in a `doc` object that encodes the original command s
 - `PARAMETER`: Any other parameters that provide further clarification on the command (e.g. on the floor/under the table ...etc.).
 - `CONDITION`: Conditions that must be fulfilled before activating this command (e.g. if/when/once ...etc.).
 
-We split this stage into the following ***XXXX*** substages:
+We split this stage into the following 3 substages:
 
 #### Stopword elimination
 Since each device and function in downstream tasks have their own unique identification, we are able to remove certain unnecessary stopwords that result in better parsing accuracy. However, common stopword databases are not optimized for command parsing, and therefore remove many words that encode *function content*, such as prepositional phrases (PP), negation (Neg), particles (Par), and prepositions (P). These words/phrases are critical in retaining `PARAMETER` and `CONDITION` information, and cannot be removed. Therefore, we limit our stopword elimination to specific categories rather than full NLTK stopword databases.
@@ -91,7 +91,7 @@ In speech input, we often connect multiple commands together with conjugatives s
 
 
 ### Flair/BERT
-Flair [3] is a powerful, multilingual NLP library that includes many text and docment embedding techniques and models developed by ![Zalando Research](https://research.zalando.com/). It is compatible with PyTorch as well as TensorFlow, which gives it simple interfaces that allow us to combine different word and document embeddings. In our project, we choose to use BERT embeddings developed by Google. BERT embeddings are based on a bidirectional transformer architecture with state-of-the-art performance in multiple NLP tasks, and it's unique "Whole Word Masking" training technique gives us accurate results in determining the meaning a particular word given it's neighboring words and sentence structure. We chose to pool the last 4 output layers as the final word embedding for similarity analysis.
+Flair [3] is a powerful, multilingual NLP library that includes many text and docment embedding techniques and models developed by [Zalando Research](https://research.zalando.com/). It is compatible with PyTorch as well as TensorFlow, which gives it simple interfaces that allow us to combine different word and document embeddings. In our project, we choose to use BERT embeddings developed by Google. BERT embeddings are based on a bidirectional transformer architecture with state-of-the-art performance in multiple NLP tasks, and it's unique "Whole Word Masking" training technique gives us accurate results in determining the meaning a particular word given it's neighboring words and sentence structure. We chose to pool the last 4 output layers as the final word embedding for similarity analysis.
 
 ### Synonym & Acronym
 
