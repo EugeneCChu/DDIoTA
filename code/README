@@ -1,5 +1,3 @@
 Run command to install dependencies:
 
-```
-pip install --requirement requirements.txt
-```
+`pip install --requirement requirements.txt`
