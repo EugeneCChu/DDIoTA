@@ -138,6 +138,6 @@ We have contructed a program that allows users to more efficiently interact with
 
 [3] https://www.nltk.org/ 
 
-[4]https://spacy.io
+[4] https://spacy.io
 
 
