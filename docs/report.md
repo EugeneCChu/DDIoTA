@@ -38,13 +38,13 @@ Unfortunately, due to time limitation, we are only able to complete the first tw
   
   
   
-  The application platform for the prototype of this system is DDFlow, an active research project that is being conducted by Joseph Noor. By connecting the DDIoTA and DDFlow, 
+  The application platform for the prototype of this system is DDFlow, an active research project that is being conducted by Joseph Noor. DDIoTA is a front-end program for DDflow, where command parsing and macro-program construction is done, while DDflow manages the dynamic, distributed device set. 
 
 ## System Design
 
 ![flowchart](supportive_imgs/flowchart.png)
 
-The flowchart above illustrates the process of our work. As the user makes a voice input, it is first transcribed into text string by *Python SpeechRecognition Model*. Then using Spacy, which syntactically analyzes and parses the string, each word is represented by a token which not only includes what this word is, but also its relationships between other words in the command. The output of SpaCy-processed command is a structured command. Then the command goes through a extraction algorithm which generates a list of four-word tuples, each of which represents a parsed command. After that, stop words are removed from each command to make sure that only the key information is preserved. Lastly, a mapping between the parsed commands and available commands is applied. Mainly consists of *acronym* and *synonym* word replacement, this procedure guarantees that the parsed command can be understood by the executing programs. More details about how each step is implemented s introduced in the following *technical approach* section.
+The flowchart above illustrates the process of our work. As the user makes a voice input, it is first transcribed into text string by *Python SpeechRecognition Model*. Then using Spacy, which syntactically analyzes and parses the string, each word is represented by a token which not only includes what this word is, but also its relationships between other words in the command. The output of SpaCy-processed command is a structured command. Then the command goes through a extraction algorithm which generates a list of four-word tuples, each of which represents a parsed command. After that, stop words are removed from each command to make sure that only the key information is preserved. Lastly, a mapping between the parsed commands and available commands is applied. Mainly consists of *acronym* and *synonym* word replacement, this procedure guarantees that the parsed command can be understood by the executing programs. More details about how each step is implemented s introduced in the following **Technical Approach** section.
 
 
 
@@ -52,29 +52,59 @@ The flowchart above illustrates the process of our work. As the user makes a voi
 
 ### Voice to text
 
-To transfer voice command to text string, we use the *Python SpeechRecognition Model* [reference] with the *Google Speech API*. The performance of transcription is generally satisfying, with an accuracy of 92.5%. The accuracy of other APIs are also tested such as CMU Sphinx and Houndify, and their success rate of transcription varies between 71% to 85%. Below are the API comparison table using *Python SpeechRecognition Model*. 
+To transfer voice command to text string, we use the **Python SpeechRecognition Model** [reference] with the **Google Speech API**. The performance of transcription is generally satisfying, with an accuracy of 92.5%. The accuracy of other APIs are also tested such as CMU Sphinx and Houndify, and their success rate of transcription varies between 71% to 85%. Below are the API comparison table using *Python SpeechRecognition Model*. 
 
 ![table](supportive_imgs/table.png)
 
-
-### Bert
-
-### Flair
+## SpaCy
+We utilize the SpaCy python module[2] for basic sentence structure analysis and dependency parsing. We chose SpaCy as it interoperates seamlessly with TensorFlow, PyTorch, scikit-learn, Gensim and the rest of Python's AI ecosystem, further simplfying tasks such as data format conversion and connection to downstream tasks in our pipeline. In this step, we input sentence commands in string format, where each word token is then annotated with it's corresponding Part-Of-Speech (POS) tagging as well as it's dependencies. This allows us to extract the relavant relationships between token pairs such as (NOUN,VERB) or (VERB, ADP) pairs, which are crucial in interpreting user commands. This 
 
 ### Command Generator
+The syntax tree constructed by SpaCy is then passed on to our command generator. In this stage, we distinguish between `DEVICE NOUNS` and `PARAMETER NOUNS`, as well as `CONDITION ADPS` and `PARAMETER ADPS`. As SpaCy cannot achieve 100% accuracy in syntatic parsing, we've included our own optimizer within this stage to further improve our parsing strategy. 
+
+During this stage, we feed in a `doc` object that encodes the original command sentence along with the annotated POS tags and dependencies. Our output is a `(ACTION, DEVICE, PARAMETER, CONDITION)` 4-tuple, which forms the basis for DDFlow's input parameters that can be directly fed into the corresponding devices. The elements in the tuple is defined as follows:*
+
+- `ACTION`: The desired function to be activated. This element is limited to certain keywords in a LUT, dependent on the device (e.g. turn on/open ...etc.).
+- `DEVICE`: The device that is to be called (e.g. the TV/the radio ...etc.). 
+- `PARAMETER`: Any other parameters that provide further clarification on the command (e.g. on the floor/under the table ...etc.).
+- `CONDITION`: Conditions that must be fulfilled before activating this command (e.g. if/when/once ...etc.).
+
+We split this stage into the following ***XXXX*** substages:
+
+#### Stopword elimination
+Since each device and function in downstream tasks have their own unique identification, we are able to remove certain unnecessary stopwords that result in better parsing accuracy. However, common stopword databases are not optimized for command parsing, and therefore remove many words that encode *function content*, such as prepositional phrases (PP), negation (Neg), particles (Par), and prepositions (P). These words/phrases are critical in retaining `PARAMETER` and `CONDITION` information, and cannot be removed. Therefore, we limit our stopword elimination to specific categories rather than full NLTK stopword databases.
+
+![flowchart](supportive_imgs/stopwords.png)
+
+#### Polyseme resolution
+In this phase, we resolve polysemes with word embeddings, specifically **BERT Embeddings** (further explained below). Polysemes such as `on` often confuse SpaCy with their correct interpretation within the command, and therefore we use word embeddings to maintain accuracy (example below).
+
+- Turn the lights *on*: on is a particle, meant to express a state of the action.
+- Put the cup *on* your table: on is a preposition, meant as preposition for further clarification in the subclause.
+
+With BERT embedding, we can resolve these complications and correctly parse the commands.
+
+#### Conjugated nouns
+In speech input, we often connect multiple commands together with conjugatives such as "and". These noun phrases are of either `DEVICE`s or `PARAMETER`s, and our program must be able to recognize these are equal yet distinct commands. We implement an algorithm that locates conjunction relationships between conjunct `DEVICE`s and conjunct `PARAMETER`s and duplicate commands for every (`DEVICE`,`CONJ_DEVICE`) and (`PARAMETER`, `CONJ_PARAMETER`) pair, as shown in the figure below:
+
+![flowchart](supportive_imgs/command_generation.png)
+
+
+### Flair/BERT
+Flair [3] is a powerful, multilingual NLP library that includes many text and docment embedding techniques and models developed by ![Zalando Research](https://research.zalando.com/). It is compatible with PyTorch as well as TensorFlow, which gives it simple interfaces that allow us to combine different word and document embeddings. In our project, we choose to use BERT embeddings developed by Google. BERT embeddings are based on a bidirectional transformer architecture with state-of-the-art performance in multiple NLP tasks, and it's unique "Whole Word Masking" training technique gives us accurate results in determining the meaning a particular word given it's neighboring words and sentence structure. We chose to pool the last 4 output layers as the final word embedding for similarity analysis.
 
 ### Synonym & Acronym
 
-Because our system’s purpose is to convert voice to multiple commands in tuple form and feed those tuples to DDFlow, it is crucial that the output is understood-able by the DDFlow system. This brings in the necessity that when the command uses a word that DDFlow cannot comprehend, the command can be converted in a way within DDFlow’s comprehension capability. For instance, the operation *direct the TV channel to 75* may confuse DDFlow because it does not have an action *direct* for the device TV. Instead, the command word *switch* is available. In this scenario, introducing word substitution becomes essential. So far, we have come up with two kinds of word substitutions: *synonym* and *acronym*. First, we write a python dictionary simulating what devices/systems there are and what their available commands are respectively. If a command’s device element is not recognizable by the system, we would introduce the *synonym & acronym handling* procedure. For acronym, if the device name consists of two or more words (e.g air conditioner), we simply take the first letter abbreviation and see if it matches any available registered device. Then if there’s still no matching, we would check whether the device name’s synonym list has anything in the available device list, and if there is any, we would replace the device element with that available device name. After that, the *action* element goes through the same procedure. We use the python *NTLK Wordnet*[3] to achieve synonym list organization and word replacement.
+Because our system’s purpose is to convert voice to multiple commands in tuple form and feed those tuples to DDFlow, it is crucial that the output is understood-able by the DDFlow system. This brings in the necessity that when the command uses a word that DDFlow cannot comprehend, the command can be converted in a way within DDFlow’s comprehension capability. For instance, the operation `direct the TV channel to 75` may confuse DDFlow because it does not have an action *direct* for the device TV. Instead, the command word `switch` is available. In this scenario, introducing word substitution becomes essential. So far, we have come up with two kinds of word substitutions: `synonym` and `acronym`. First, we write a python dictionary simulating what devices/systems there are and what their available commands are respectively. If a command’s device element is not recognizable by the system, we would introduce the **Synonym & Acronym Handling** procedure. For acronym, if the device name consists of two or more words (e.g air conditioner), we simply take the first letter abbreviation and see if it matches any available registered device. Then if there’s still no matching, we would check whether the device name’s synonym list has anything in the available device list, and if there is any, we would replace the device element with that available device name. After that, the `ACTION` element goes through the same procedure. We use the python **NTLK Wordnet**[3] to achieve synonym list organization and word replacement.
 
-One instance of *synonym & acronym handling* is presented below:
+One instance of **Synonym & Acronym Handling** is presented below:
 
 ![set_ac](supportive_imgs/acro_syno.png)
 
 
 ## Result
 
-A 41-command-included file is used for DDIoTA system verification. These commands are all acquired from popular *Siri* and *Alexa* popular command lists. The length of commands ranges from 3 to 12 words and desired output tuple-command number range from 1 to 4. The accuracy versus command length graph is shown below.
+A 41-command-included file is used for DDIoTA system verification. These commands are all acquired from popular **Siri** and **Alexa** popular command lists. The length of commands ranges from 3 to 12 words and desired output tuple-command number range from 1 to 4. The accuracy versus command length graph is shown below.
 
 ![accuracy](supportive_imgs/result_accuracy.png)
 
