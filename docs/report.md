@@ -136,7 +136,7 @@ We have contructed a program that allows users to more efficiently interact with
 
 [2] https://github.com/zalandoresearch/flair 
 
-[3] https://www.nltk.org/ 
+[3] https://www.nltk.org
 
 [4] https://spacy.io
 
