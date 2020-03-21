@@ -6,7 +6,7 @@ layout: default
 
 **First Phase - 80%**
 1. Front-end program can extract sentence from speech with high accuracy 
-3. Currently no parameters or specific actions can be determined $G$
+3. Currently no parameters or specific actions can be determined \$G\$
 
 ```markdown
 Python speech to text → Part-Of-Speech tagger
